@@ -4,6 +4,7 @@
 #define RX 3
 
 SoftwareSerial bluetoothSerial(TX, RX);   // 블루투스 객체 선언
+String message;
 
 void setup() {
   // put your setup code here, to run once:
@@ -13,8 +14,13 @@ void setup() {
 
 void loop() {
   if (bluetoothSerial.available()) {
-      char message = bluetoothSerial.read();
+      char c = bluetoothSerial.read();
 
-      Serial.println(message);
+      if (c == '@') {
+        Serial.println(message);
+        message = "";
+      } else {
+        message += c; 
+      }
   }
 }
