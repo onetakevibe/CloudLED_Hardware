@@ -19,8 +19,6 @@ void loop() {
       if (c == '@') {
         Serial.println(message);
         message = "";
-      } else {
-        message += c; 
-      }
+      } 
   }
 }
